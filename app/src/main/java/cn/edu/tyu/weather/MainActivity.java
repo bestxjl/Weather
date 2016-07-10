@@ -2,6 +2,7 @@ package cn.edu.tyu.weather;
 
         import android.app.Activity;
         import android.content.SharedPreferences;
+        import android.media.Image;
         import android.os.Bundle;
         import android.os.Handler;
         import android.os.Message;
@@ -36,6 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private TextView cityTv, timeTv, humidityTv, weekTv, pmDataTv, pmQualityTv,
             temperatureTv, climateTv, windTv, city_name_Tv;
     private ImageView weatherImg, pmImg;
+    private ImageView SelectCity;
 
     private Handler mHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
@@ -88,7 +90,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
 
         if (view.getId() == R.id.title_update_btn){
-            //Toast.makeText(MainActivity.this,"更新成功 ！",Toast.LENGTH_LONG).show();
+
             SharedPreferences sharedPreferences = getSharedPreferences("config", MODE_PRIVATE);
             String cityCode = sharedPreferences.getString("main_city_code","101100101");
             Log.d("myWeather",cityCode);
