@@ -1,6 +1,7 @@
 package cn.edu.tyu.weather;
 
         import android.app.Activity;
+        import android.content.Intent;
         import android.content.SharedPreferences;
         import android.media.Image;
         import android.os.Bundle;
@@ -37,7 +38,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private TextView cityTv, timeTv, humidityTv, weekTv, pmDataTv, pmQualityTv,
             temperatureTv, climateTv, windTv, city_name_Tv;
     private ImageView weatherImg, pmImg;
-    private ImageView SelectCity;
+    private ImageView mCitySelect;
 
     private Handler mHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
@@ -59,6 +60,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         mUpdateBtn = (ImageView) findViewById(R.id.title_update_btn);
         mUpdateBtn.setOnClickListener(this);
+        mCitySelect=(ImageView)findViewById(R.id.title_city_manager);
+        mCitySelect.setOnClickListener(this);
         initView();
     }
     void initView(){
@@ -88,6 +91,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
     @Override
     public void onClick(View view) {
+        if(view.getId() == R.id.title_city_manager )
+        {
+            Intent i = new Intent(this,SelectCity.class);
+            startActivity(i);
+        }
 
         if (view.getId() == R.id.title_update_btn){
 
